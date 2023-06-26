@@ -95,3 +95,29 @@ void Login::changeMail(std::string username, std::string newMail)
             users[i]->email = newMail;
     }
 }
+
+void Login::registerUser(std::string username, std::string password, std::string email)
+{
+    // adding new user, if exist do nothing
+    // bool already_registered { false };
+    // while (users.size())
+    //     if (Login::checkUsername(username) || Login::checkEmail(email)) {
+    //         already_registered = true;
+    //         break;
+    //     }
+    // if (!already_registered) {
+    //     User* usr = new User { username, password, email };
+    //     users.push_back(usr);
+    // } --> Segmentation Error! :(
+
+    bool already_registered { false };
+    for (size_t i {}; i < users.size(); i++)
+        if (users[i]->username == username || users[i]->email == email) {
+            already_registered = true;
+            break;
+        }
+    if (!already_registered) {
+        User* usr = new User { username, password, email };
+        users.push_back(usr);
+    }
+}
