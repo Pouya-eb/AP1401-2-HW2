@@ -68,3 +68,30 @@ bool Login::checkEmail(std::string& new_email)
     }
     return false;
 }
+
+void Login::changeUsername(std::string username, std::string newUsername)
+{
+    // finding the current username and replacing it with newUsername
+    for (size_t i {}; i < users.size(); i++) {
+        if (users[i]->username == username)
+            users[i]->username = newUsername;
+    }
+}
+
+void Login::changePassword(std::string username, std::string newPassword)
+{
+    // finding the current username and changinf its password
+    for (size_t i {}; i < users.size(); i++) {
+        if (users[i]->username == username)
+            users[i]->password = newPassword;
+    }
+}
+
+void Login::changeMail(std::string username, std::string newMail)
+{
+    // finding the current username and changing its email
+    for (size_t i {}; i < users.size(); i++) {
+        if (users[i]->username == username)
+            users[i]->email = newMail;
+    }
+}
