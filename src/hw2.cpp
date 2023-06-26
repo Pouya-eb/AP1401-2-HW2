@@ -139,3 +139,20 @@ void Login::loginUser(std::string username, std::string password)
         }
     }
 }
+
+void Login::removeUser(std::string username)
+{
+    size_t i {};
+    while (users.size()) {
+        for (size_t i {}; i < users.size(); i++)
+            if (users[i]->username == username)
+                users.erase(users.begin() + i);
+        i++;
+    }
+    i = 0;
+    while (LoginedUsers.size()) {
+        if (LoginedUsers[i]->username == username)
+            LoginedUsers.erase(LoginedUsers.begin() + i);
+        i++;
+    }
+}
