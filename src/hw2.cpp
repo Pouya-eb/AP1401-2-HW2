@@ -156,3 +156,11 @@ void Login::removeUser(std::string username)
         i++;
     }
 }
+
+User* Login::getUser(std::string username)
+{
+    for (size_t i {}; i < users.size(); i++)
+        if (users[i]->username == username)
+            return users[i];
+    return nullptr;
+}
