@@ -45,3 +45,26 @@ void Login::readFile(std::string path)
         }
     }
 }
+
+bool Login::checkUsername(std::string& new_username)
+{
+    // iterating whole users, if not exist add it to users
+    // exist : true, not exist : false
+    for (size_t i {}; i < users.size(); i++) {
+        if (users[i]->username == new_username) {
+            std::cout << "username already taken" << std::endl;
+            return true;
+        }
+    }
+    return false;
+}
+
+bool Login::checkEmail(std::string& new_email)
+{
+    // iterating whole users, if email exists return true else false
+    for (size_t i {}; users.size(); i++) {
+        if (users[i]->email == new_email)
+            return true;
+    }
+    return false;
+}
