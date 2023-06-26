@@ -121,3 +121,21 @@ void Login::registerUser(std::string username, std::string password, std::string
         users.push_back(usr);
     }
 }
+
+void Login::loginUser(std::string username, std::string password)
+{
+    bool logedin { false };
+    for (size_t i {}; i < users.size(); i++) {
+        if ((users[i]->username == username) && (users[i]->password == password)) {
+            for (size_t j {}; j < LoginedUsers.size(); j++) {
+                if ((LoginedUsers[j]->username == username) && (LoginedUsers[j]->password == password)) {
+                    logedin = true;
+                    break;
+                }
+            }
+            if (!logedin) {
+                LoginedUsers.push_back(users[i]);
+            }
+        }
+    }
+}
